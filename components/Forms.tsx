@@ -56,6 +56,45 @@ async function submitToGoogleForm(name: string, email: string): Promise<boolean>
   }
 }
 
+/**
+ * Contact page form -> a separate Google Form (Name, Email, Topic, Message).
+ * Same no-cors / x-www-form-urlencoded technique as submitToGoogleForm above.
+ * The form owner turned on "Get email notifications for new responses" in
+ * that form's Responses tab, so every submission also lands as an email.
+ */
+const CONTACT_FORM_ACTION =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfr6WBK5-HbmI1HrhPT78_2H5kd5E__3JOexn1gR2f81bTstw/formResponse";
+const CONTACT_FORM_FIELDS = {
+  name: "entry.1058156920",
+  email: "entry.1718354370",
+  topic: "entry.1071032994",
+  message: "entry.1327824145",
+};
+
+async function submitContactToGoogleForm(values: {
+  name: string;
+  email: string;
+  topic: string;
+  message: string;
+}): Promise<boolean> {
+  try {
+    const body = new URLSearchParams();
+    body.set(CONTACT_FORM_FIELDS.name, values.name);
+    body.set(CONTACT_FORM_FIELDS.email, values.email);
+    body.set(CONTACT_FORM_FIELDS.topic, values.topic);
+    body.set(CONTACT_FORM_FIELDS.message, values.message);
+    await fetch(CONTACT_FORM_ACTION, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: body.toString(),
+    });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export function LeadForm({
   t,
   compact = false,
@@ -142,7 +181,7 @@ export function ContactForm({ t }: { t: Dictionary }) {
       return;
     }
     setState("sending");
-    const ok = await submitLead({ type: "contact", locale: t.locale, ...values });
+    const ok = await submitContactToGoogleForm(values);
     setState(ok ? "success" : "error");
   }
 
