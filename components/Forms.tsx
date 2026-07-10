@@ -25,6 +25,37 @@ async function submitLead(payload: Record<string, string>): Promise<boolean> {
   }
 }
 
+/**
+ * Starter Kit / trial email capture -> the "Bộ khởi đầu cho cha mẹ" Google
+ * Form. Google Forms won't return a CORS-readable response to fetch(), so we
+ * POST as x-www-form-urlencoded (a CORS-safelisted content type) in
+ * "no-cors" mode: the browser is allowed to send it, we just can't read the
+ * response back. If the request doesn't throw, we treat it as delivered.
+ */
+const GOOGLE_FORM_ACTION =
+  "https://docs.google.com/forms/d/e/1FAIpQLSc3bggNliChUVoJnH8xUH7CTDleV2KjVZg3YZWq0l8cGD-2SA/formResponse";
+const GOOGLE_FORM_FIELDS = {
+  name: "entry.1361629646",
+  email: "entry.1765252701",
+};
+
+async function submitToGoogleForm(name: string, email: string): Promise<boolean> {
+  try {
+    const body = new URLSearchParams();
+    body.set(GOOGLE_FORM_FIELDS.name, name);
+    body.set(GOOGLE_FORM_FIELDS.email, email);
+    await fetch(GOOGLE_FORM_ACTION, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: body.toString(),
+    });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export function LeadForm({
   t,
   compact = false,
@@ -48,7 +79,7 @@ export function LeadForm({
       return;
     }
     setState("sending");
-    const ok = await submitLead({ type: leadType, name, email, locale: t.locale });
+    const ok = await submitToGoogleForm(name, email);
     setState(ok ? "success" : "error");
   }
 
