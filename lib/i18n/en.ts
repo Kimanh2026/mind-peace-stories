@@ -195,7 +195,7 @@ export const en = {
       },
       {
         name: "Monthly",
-        price: "$14",
+        price: "\$7",
         period: "per month",
         highlight: true,
         badge: "Most popular",
@@ -210,10 +210,10 @@ export const en = {
       },
       {
         name: "Annual",
-        price: "$119",
+        price: "\$69",
         period: "per year",
         highlight: false,
-        badge: "Save 29%",
+        badge: "Save 18%",
         features: [
           "Everything in Monthly",
           "Two months free",

@@ -197,7 +197,7 @@ export const vi: Dictionary = {
       },
       {
         name: "Gói tháng",
-        price: "14 $",
+        price: "7 \$",
         period: "mỗi tháng",
         highlight: true,
         badge: "Được chọn nhiều nhất",
@@ -212,10 +212,10 @@ export const vi: Dictionary = {
       },
       {
         name: "Gói năm",
-        price: "119 $",
+        price: "69 \$",
         period: "mỗi năm",
         highlight: false,
-        badge: "Tiết kiệm 29%",
+        badge: "Tiết kiệm 18%",
         features: [
           "Mọi quyền lợi của Gói tháng",
           "Tặng hai tháng",
