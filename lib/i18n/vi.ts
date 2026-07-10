@@ -197,10 +197,12 @@ export const vi: Dictionary = {
       },
       {
         name: "Gói tháng",
-        price: "7 \$",
+        originalPrice: "14 $",
+        price: "7 $",
         period: "mỗi tháng",
         highlight: true,
         badge: "Được chọn nhiều nhất",
+        saleNote: "Giá ra mắt — giảm 50%, tăng giá sau 3 tháng",
         features: [
           "Trò chuyện không giới hạn với AI Coach",
           "365 câu chuyện mỗi năm",
@@ -212,10 +214,12 @@ export const vi: Dictionary = {
       },
       {
         name: "Gói năm",
-        price: "69 \$",
+        originalPrice: "119 $",
+        price: "69 $",
         period: "mỗi năm",
         highlight: false,
-        badge: "Tiết kiệm 18%",
+        badge: "Tiết kiệm 42%",
+        saleNote: "Giá ra mắt — tăng giá sau 3 tháng",
         features: [
           "Mọi quyền lợi của Gói tháng",
           "Tặng hai tháng",

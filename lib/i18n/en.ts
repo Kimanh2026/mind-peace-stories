@@ -195,10 +195,12 @@ export const en = {
       },
       {
         name: "Monthly",
-        price: "\$7",
+        originalPrice: "$14",
+        price: "$7",
         period: "per month",
         highlight: true,
         badge: "Most popular",
+        saleNote: "Launch price — 50% off, goes up in 3 months",
         features: [
           "Unlimited AI Coach conversations",
           "365 daily stories a year",
@@ -210,10 +212,12 @@ export const en = {
       },
       {
         name: "Annual",
-        price: "\$69",
+        originalPrice: "$119",
+        price: "$69",
         period: "per year",
         highlight: false,
-        badge: "Save 18%",
+        badge: "Save 42%",
+        saleNote: "Launch price — goes up in 3 months",
         features: [
           "Everything in Monthly",
           "Two months free",

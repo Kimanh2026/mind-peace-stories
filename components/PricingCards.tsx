@@ -24,11 +24,29 @@ export function PricingCards({ locale, t }: { locale: Locale; t: Dictionary }) {
               {plan.name}
             </h3>
             <p className="mt-4 flex items-baseline gap-2">
+              {"originalPrice" in plan && plan.originalPrice && (
+                <span
+                  className={`font-display text-xl font-medium line-through ${
+                    plan.highlight ? "text-paper/45" : "text-charcoal/40"
+                  }`}
+                >
+                  {plan.originalPrice}
+                </span>
+              )}
               <span className={`font-display text-4xl font-semibold ${plan.highlight ? "text-gold" : "text-forest"}`}>
                 {plan.price}
               </span>
               <span className={`text-sm ${plan.highlight ? "text-paper/60" : "text-charcoal/55"}`}>{plan.period}</span>
             </p>
+            {"saleNote" in plan && plan.saleNote && (
+              <p
+                className={`mt-2 text-xs font-semibold uppercase tracking-wide ${
+                  plan.highlight ? "text-gold" : "text-sagedeep"
+                }`}
+              >
+                {plan.saleNote}
+              </p>
+            )}
             <ul className="mt-6 flex-1 space-y-3">
               {plan.features.map((feat) => (
                 <li key={feat} className="flex items-start gap-2.5 text-sm">
