@@ -488,7 +488,7 @@ export const en = {
     alt: {
       title: "Prefer email?",
       body: "Write to us any time:",
-      email: "hello@mindpeacestories.com",
+      email: "nkimanh932@gmail.com",
       response: "We reply within two business days.",
     },
     support: {

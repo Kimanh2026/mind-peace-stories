@@ -490,7 +490,7 @@ export const vi: Dictionary = {
     alt: {
       title: "Bạn thích gửi email hơn?",
       body: "Viết cho chúng tôi bất cứ lúc nào:",
-      email: "hello@mindpeacestories.com",
+      email: "nkimanh932@gmail.com",
       response: "Chúng tôi trả lời trong vòng hai ngày làm việc.",
     },
     support: {
